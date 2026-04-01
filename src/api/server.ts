@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import path from 'path';
 import { Blockchain } from '../core/blockchain';
 import { P2PNode } from '../network/p2p';
 import { Crypto } from '../core/crypto';
@@ -42,6 +43,10 @@ export class APIServer {
     this.app.use(bodyParser.json({ limit: '50mb' }));
     this.app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
+    // Serve static files from public directory
+    const publicPath = path.join(process.cwd(), 'src', 'public');
+    this.app.use(express.static(publicPath));
+
     // Request logging middleware
     this.app.use((req: Request, res: Response, next) => {
       console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
@@ -56,50 +61,9 @@ export class APIServer {
     // Auth routes
     this.app.use('/auth', authRouter);
 
-    // Root endpoint
+    // Root endpoint - redirect to login page
     this.app.get('/', (req: Request, res: Response) => {
-      res.json({
-        name: 'Custom Token Blockchain API',
-        version: '1.0.0',
-        status: 'running',
-        timestamp: Date.now(),
-        chainHeight: this.blockchain.getChain().length,
-        endpoints: {
-          health: 'GET /health',
-          blockchain: {
-            info: 'GET /blockchain/info',
-            chain: 'GET /blockchain/chain',
-            blockByHeight: 'GET /blockchain/block/:height',
-            blockByHash: 'GET /blockchain/block-hash/:hash',
-          },
-          transactions: {
-            pending: 'GET /transactions/pending',
-            create: 'POST /transactions',
-          },
-          balance: {
-            all: 'GET /balance/:address',
-            specific: 'GET /balance/:address/:tokenId',
-            mint: 'POST /mint',
-            burn: 'POST /burn',
-          },
-          crypto: {
-            keypair: 'GET /crypto/keypair',
-            sign: 'POST /crypto/sign',
-            verify: 'POST /crypto/verify',
-          },
-          contracts: {
-            deploy: 'POST /contracts/deploy',
-            get: 'GET /contracts/:address',
-            call: 'POST /contracts/:address/call',
-          },
-          network: {
-            info: 'GET /network/info',
-            node: 'GET /network/node',
-            peers: 'GET /network/peers',
-            connectPeer: 'POST /network/peers',
-          },
-        },
-      });
+      res.redirect('/auth.html');
     });
 
     // Health check
