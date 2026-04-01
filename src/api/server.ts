@@ -61,10 +61,8 @@ export class APIServer {
     // Auth routes
     this.app.use('/auth', authRouter);
 
-    // Root endpoint - redirect to login page
-    this.app.get('/', (req: Request, res: Response) => {
-      res.redirect('/auth.html');
-    });
+    // Note: Root / is served by express.static middleware (index.html)
+    // No explicit route needed here - let static files handle it
 
     // Health check
     this.app.get('/health', (req: Request, res: Response) => {
