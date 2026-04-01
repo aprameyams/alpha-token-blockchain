@@ -6,6 +6,7 @@ import { P2PNode } from '../network/p2p';
 import { Crypto } from '../core/crypto';
 import { Transaction } from '../core/types';
 import { SmartContractVM } from '../core/smartContract';
+import { authRouter } from '../core/authRoutes';
 
 /**
  * REST API Server for blockchain interaction
@@ -52,6 +53,9 @@ export class APIServer {
    * Setup API routes
    */
   private setupRoutes(): void {
+    // Auth routes
+    this.app.use('/auth', authRouter);
+
     // Root endpoint
     this.app.get('/', (req: Request, res: Response) => {
       res.json({

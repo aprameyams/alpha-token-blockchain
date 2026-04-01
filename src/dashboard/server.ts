@@ -12,8 +12,17 @@ const publicPath = path.join(process.cwd(), 'src', 'public');
 
 app.use(express.static(publicPath));
 
+// Redirect root to auth page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(publicPath, 'index.html'));
+  res.redirect('/auth.html');
+});
+
+app.get('/auth', (req, res) => {
+  res.sendFile(path.join(publicPath, 'auth.html'));
+});
+
+app.get('/dashboard', (req, res) => {
+  res.sendFile(path.join(publicPath, 'dashboard.html'));
 });
 
 app.get('/api-config', (req, res) => {
