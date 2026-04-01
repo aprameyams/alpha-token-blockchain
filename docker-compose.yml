@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  node1:
+    build: .
+    container_name: blockchain-node1
+    environment:
+      - P2P_PORT=8000
+      - API_PORT=3000
+      - DIFFICULTY=4
+      - BLOCK_TIME=10000
+    ports:
+      - "3000:3000"
+      - "8000:8000"
+    command: npm run node
+    networks:
+      - blockchain-network
+
+  node2:
+    build: .
+    container_name: blockchain-node2
+    environment:
+      - P2P_PORT=8001
+      - API_PORT=3001
+      - DIFFICULTY=4
+      - BLOCK_TIME=10000
+    ports:
+      - "3001:3001"
+      - "8001:8001"
+    command: npm run node
+    networks:
+      - blockchain-network
+    depends_on:
+      - node1
+
+  node3:
+    build: .
+    container_name: blockchain-node3
+    environment:
+      - P2P_PORT=8002
+      - API_PORT=3002
+      - DIFFICULTY=4
+      - BLOCK_TIME=10000
+    ports:
+      - "3002:3002"
+      - "8002:8002"
+    command: npm run node
+    networks:
+      - blockchain-network
+    depends_on:
+      - node1
+
+  dashboard:
+    build: .
+    container_name: blockchain-dashboard
+    environment:
+      - API_URL=http://node1:3000
+      - DASHBOARD_PORT=8080
+    ports:
+      - "8080:8080"
+    command: npm run dashboard
+    networks:
+      - blockchain-network
+    depends_on:
+      - node1
+
+networks:
+  blockchain-network:
+    driver: bridge

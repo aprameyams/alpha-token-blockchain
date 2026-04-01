@@ -1,0 +1,79 @@
+[
+  {
+    "index": 0,
+    "timestamp": 1774962790477,
+    "transactions": [],
+    "previousHash": "0",
+    "hash": "d2a42290d8cdfc80e09fd720435a997996f4487ab2bf1ea9e58d736f205a3cd7",
+    "nonce": 0,
+    "miner": "GENESIS",
+    "difficulty": 1
+  },
+  {
+    "index": 1,
+    "timestamp": 1774963959573,
+    "transactions": [
+      {
+        "id": "46c3a729704d357b8cb8473405cfa8cc",
+        "fromAddress": "MINTING_REWARD",
+        "toAddress": "0xb4fc6d70d4aab4136993c7e17ccfe347712be4f4",
+        "amount": 100,
+        "tokenId": "ALPHA_TOKEN",
+        "timestamp": 1774963014056
+      },
+      {
+        "id": "80b62ccefd614e6d19540445446c7764",
+        "fromAddress": "MINTING_REWARD",
+        "toAddress": "0x9901d1180c0088f9c3822dfd48bf99903a7c8d14",
+        "amount": 500,
+        "tokenId": "ALPHA_TOKEN",
+        "timestamp": 1774963028526
+      },
+      {
+        "id": "fb2c74ee258c49ff2d2ce2313f27b2b9",
+        "fromAddress": "MINTING_REWARD",
+        "toAddress": "0xcb0aba12aeb78a231754ea12d3fcc729fd4e2db9",
+        "amount": 1000,
+        "tokenId": "ALPHA_TOKEN",
+        "timestamp": 1774963140012
+      },
+      {
+        "id": "fcf95f43479847d62d2a09e90621c6c4",
+        "fromAddress": "0xcb0aba12aeb78a231754ea12d3fcc729fd4e2db9",
+        "toAddress": "0xa4eea77d33daa45191e29b820dc70b9c265649e5",
+        "amount": 250,
+        "tokenId": "ALPHA_TOKEN",
+        "timestamp": 1774963140318
+      },
+      {
+        "id": "c1eef2b65ec1e80d93a788d83a36d02b",
+        "fromAddress": "MINTING_REWARD",
+        "toAddress": "0x8eb74ec0ea6bb4cd46ae181a2bcca66499900868",
+        "amount": 1000,
+        "tokenId": "ALPHA_TOKEN",
+        "timestamp": 1774963163513
+      },
+      {
+        "id": "dff93d9724d4c2040659031ccc748a6d",
+        "fromAddress": "0x8eb74ec0ea6bb4cd46ae181a2bcca66499900868",
+        "toAddress": "0xe3379d749d1fd7dffdba84197b562e37da6c4a0b",
+        "amount": 250,
+        "tokenId": "ALPHA_TOKEN",
+        "timestamp": 1774963896883
+      },
+      {
+        "id": "d09955012f0a008f3463dbf148c169d0",
+        "fromAddress": "MINING_REWARD",
+        "toAddress": "0x8eb74ec0ea6bb4cd46ae181a2bcca66499900868",
+        "amount": 100,
+        "tokenId": "NATIVE_TOKEN",
+        "timestamp": 1774963959573
+      }
+    ],
+    "previousHash": "d2a42290d8cdfc80e09fd720435a997996f4487ab2bf1ea9e58d736f205a3cd7",
+    "hash": "b2d1869618d7e57186e03d1d53c1676d7e02ff96da02a6bae693e804c1573f1d",
+    "nonce": 0,
+    "miner": "0x8eb74ec0ea6bb4cd46ae181a2bcca66499900868",
+    "difficulty": 1
+  }
+]
